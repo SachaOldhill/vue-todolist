@@ -3,10 +3,9 @@
 <html lang="en" dir="ltr">
 
 <head>
-
   <meta charset="utf-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vue - Todo List</title>
 
   <!-- Font Awsome -->
 
@@ -20,9 +19,11 @@
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-  <title>Vue</title>
+  <!-- CSS -->
 
   <link rel="stylesheet" href="master.css">
+
+  <!-- JS -->
 
   <script src="script.js" charset="utf-8"></script>
 
@@ -34,16 +35,17 @@
      <img src="https://www.boolean.careers/images/misc/logo.png" alt="">
    </div>
    <div class="new-todo">
-     <input v-model='newTodo'type="text" name="" value="">
+     <input v-model='newTodo' @keyup.enter='addTodo' type="text" name="" value="">
      <button @click="addTodo" type="button" name="button">Aggiungi</button>
    </div>
    <div class="todos-container">
-     <ul v-for="todo in todos">
-       <li class="todo">
+     <ul v-if='todoElem.length > 0'>
+       <li class="todo" v-for="(todo, index) in todoElem">
          {{todo}}
-         <i @click='deleteTodo'class="fas fa-times"></i>
+         <i @click='deleteTodo(index)'class="fas fa-times"></i>
        </li>
      </ul>
+     <h2 v-else>Todo Nothing</h2>
 
    </div>
   </div>

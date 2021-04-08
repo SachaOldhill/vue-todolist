@@ -21,9 +21,16 @@ function initVue(){
     },
     methods:{
      addTodo: function(){
-       this.todoElem.push(this.newTodo);
-       console.log("click");
-      }
+       if(this.newTodo.length > 0){
+         this.todoElem.push(this.newTodo);
+         this.newTodo='';
+         console.log("add");
+       }
+     },
+     deleteTodo: function(index){
+       this.todoElem.splice(index, 1);
+       console.log("delete");
+     },
     },
   });
 }
@@ -55,33 +62,33 @@ $(init);
 
 
 
-function initVue() {
-  new Vue({
-    el: '#app',
-    data: {
-        "todos": [
-        "elem1",
-        "elem2",
-        "elem3",
-      ],
-      "newTodo":"",
-    },
-    methods: {
-      createNewTodo: function(){
-        if(this.newTodo.length>0){
-          this.todos.push(this.newTodo);
-          this.newTodo="";
-          console.log("click");
-        }
-      },
-      clickDeleteTodo: function(index){
-       this.todos.splice(index, 1);
-      },
-    }
-  });
-}
-
-function init() {
-  initVue();
-}
-$(init);
+// function initVue() {
+//   new Vue({
+//     el: '#app',
+//     data: {
+//         "todos": [
+//         "elem1",
+//         "elem2",
+//         "elem3",
+//       ],
+//       "newTodo":"",
+//     },
+//     methods: {
+//       createNewTodo: function(){
+//         if(this.newTodo.length>0){
+//           this.todos.push(this.newTodo);
+//           this.newTodo="";
+//           console.log("click");
+//         }
+//       },
+//       clickDeleteTodo: function(index){
+//        this.todos.splice(index, 1);
+//       },
+//     }
+//   });
+// }
+//
+// function init() {
+//   initVue();
+// }
+// $(init);
